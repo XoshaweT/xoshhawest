@@ -3,10 +3,6 @@
 
 
 
-
-
-
-
 <!DOCTYPE html>
 <html>
  
@@ -16,24 +12,149 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-           <link rel="stylesheet" href="styles.css">
+   
 <title>alle store</title>
 
 
+<style>
+ *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,Helvetica,sans-serif}
+  body{background:#fff;color:#111;auto;padding-bottom:80px}
+  img{display:block;max-width:100%}
+  button{cursor:pointer;font-family:inherit}
+  a{text-decoration:none;color:inherit}
 
 
-</head>
-<body>
+  /* HERO */
+  .hero{position:relative}
+  .hero>img{width:100%;height:65vh;object-fit:cover ;aspect-ratio:4/5;}
+  .nav{position:absolute;top:0;left:0;right:0;display:flex;justify-content:space-between;
+       align-items:center;padding:1px 10px;background:rgba(0,0,0,.4);color:#fff}
+  .nav button,.nav a{background:none;border:none;color:#fff;font-size:35px}
+  .brand{font-size:28px;font-weight:90;letter-spacing:-1px;text-transform:lowercase}
+  .brand sup{font-size:1px}
+   .brand>img{width :25% ; display:inline-flex;margin-top:20px ;margin-bottom:12px; }
+  .caption{position:absolute;bottom:24px;left:20px;background:rgba(0,0,0,.4);
+           color:#fff;padding:8px 16px;font-size:17px;font-weight:800;letter-spacing:5px}
 
+  /* SLIDER DOTS */
+  .slider{display:flex;gap:0px;padding:16px 20px}
+  .slider span{flex:1;height:2px;background:#111}
+  .slider span.dim{background:#ccc}
 
-   
+ 
  
 
-        
-        
-        
-        
-        
+  /* SECTION TITLE */
+  .sec-title{padding:0 20px;display:flex;justify-content:space-between;
+             align-items:flex-end;margin-bottom:12px}
+  .sec-title h2{font-size:22px;font-weight:900}
+  .sec-title a{font-size:11px;letter-spacing:2px;color:#777}
+
+  /* GRID */
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:0 20px}
+  .card{border:1px solid #ddd;cursor:pointer;background:#fff}
+  .card .img-wrap{position:relative}
+  .card img{width:100%;aspect-ratio:1/1;object-fit:cover}
+  .tag{position:absolute;top:8px;left:8px;background:#111;color:#fff;
+       font-size:10px;font-weight:bold;padding:2px 8px;letter-spacing:2px}
+  .heart{position:absolute;top:8px;right:8px;background:rgba(255,255,255,.8);
+         border:none;padding:6px;border-radius:50%;font-size:12px}
+  .card-info{padding:10px}
+  .card-info h3{font-size:11px;font-weight:bold;letter-spacing:2px;margin-top:4px}
+  .card-info p{font-size:14px;font-weight:bold;margin-top:4px}
+  .stars{font-size:10px;color:#777}
+
+  /* BANNER */
+  .banner{margin:40px 20px 0;background:#111;color:#fff;text-align:center;padding:24px}
+  .banner p.eyebrow{font-size:11px;letter-spacing:4px;margin-bottom:8px}
+  .banner h3{font-size:28px;font-weight:900;margin-bottom:8px}
+  .banner p.sub{font-size:11px;color:rgba(255,255,255,.7);margin-bottom:16px}
+  .banner button{background:#fff;color:#111;border:none;padding:8px 24px;
+                 font-size:11px;font-weight:bold;letter-spacing:2px}
+
+  /* FOOTER */
+  footer{margin-top:1px;padding:0 20px;text-align:center}
+  footer h4{font-size:22px;font-weight:9;text-transform:lowercase}
+  footer>img{width:30%;   display:inline-flex;align-items:center;gap:100px;margin-top:40px ;margin-bottom:30px; }
+  footer .meta{font-size:20px;color:#777;letter-spacing:2px;margin-top:8px}
+  footer .ig{display:inline-flex;align-items:center;gap:8px;margin-top:16px;color:#777}
+  footer .copy{font-size:15px;color:#777;margin-top:24px}
+
+  /* BOTTOM NAV */
+  .bottom-nav{position:fixed;bottom:0;left:0;right:0;max-width:480px;margin:0 auto;
+              background:#fff;border-top:1px solid #ddd;display:flex;
+              justify-content:space-around;padding:12px 0}
+  .bottom-nav button{display:flex;flex-direction:column;align-items:center;
+                     background:none;border:none;color:#777;font-size:18px}
+  .bottom-nav button.active{color:#111}
+  .bottom-nav span{font-size:10px;margin-top:4px;letter-spacing:2px}
+
+  
+  
+  
+  
+  
+  
+  
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:50;
+         display:none;justify-content:center;align-items:flex-end}
+  .modal.open{display:flex}
+  .modal-content{background:#fff;width:80%;max-width:500px;max-height:100vh;
+                 overflow-y:auto;position:relative}
+  .close-btn{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.4);
+             border:none;padding:8px;border-radius:0%;font-size:30px;z-index:20; color:white;}
+  .modal img{width:100%;aspect-ratio:4/5;object-fit:cover}
+  .modal-body{padding:20px ; }
+  .modal-body .tag{position:static;display:inline-block;margin-bottom:8px}
+  .modal-body h2{font-size:20px;font-weight:900;letter-spacing:3px}
+  .modal-body .price-big{font-size:22px;font-weight:bold;letter-spacing:2px;margin-top:7px}
+  .modal-body .desc{font-size:14px;color:#666;margin-top:6px;line-height:1.6}
+  .ig-btn{display:flex;align-items:center;justify-content:center;gap:5px;width:100%;
+        	background: linear-gradient(to right, #4F008C 0%, #E06900 100%) ;color:#fff;border:none;padding:14px;font-size:15px;
+          font-weight:bold;letter-spacing:2px;margin-top:6px}
+  .close-cta{width:100%;background:#fff;color:#111;border:2px solid #111;padding:14px;
+             font-size:15px;font-weight:bold;letter-spacing:2px;margin-top:8px}
+  .hint{font-size:10px;color:#777;text-align:center;margin-top:4px;letter-spacing:1px}
+</style>
+</head>
+<body>
+   
+ 
+<!-- HERO -->
+
+<!-- HERO -->
+<section class="hero"> 
+
+
+
+
+
+<img id="mySlide fade" src="image.png" >
+
+<script>
+  const images = [" https://cdn.phototourl.com/free/2026-05-26-955b95c1-737b-41fd-ab6e-8ef3103da2c4.jpg ",
+  "https://cdn.phototourl.com/pro/2026-05-26-5ffd0461-dfa5-4af5-bfa2-c1358897978e.png",
+  "https://cdn.phototourl.com/pro/2026-05-26-fd01e2ed-d953-456b-ac67-24e411c72665.png"];
+  
+  // Your image list
+  let index = 0;
+
+  function changeImage() {
+    index = (index + 1) % images.length; // Loop back to start after last image
+    document.getElementById("mySlide fade").src = images[index];
+  }
+
+  // Change image every 3 seconds (3000 milliseconds)
+  setInterval(changeImage, 3000); 
+</script>
+
+
+
+</script>
+
+    
+  
+  
   <header class="nav">
     
 
@@ -100,7 +221,7 @@ https://cdn.phototourl.com/pro/2026-05-26-73b7aade-ebb4-4ac6-bf45-f9d032cc531a.p
 <div class="modal" id="modal" onclick="closeModal(event)">
   <div class="modal-content" onclick="event.stopPropagation()">
     <button class="close-btn" onclick="closeModal()">✕</button>
-    <img loading="lazy" id="m-img" src="" alt="" />
+    <img id="m-img" src="" alt="" />
     <div class="modal-body">  
     <p class="hint"> ALLE STORE</p>
       <span class="tag" id="m-tag"></span>
@@ -118,696 +239,722 @@ https://cdn.phototourl.com/pro/2026-05-26-73b7aade-ebb4-4ac6-bf45-f9d032cc531a.p
     
       <button class="close-cta" onclick="closeModal()">✕</button>
       <p class="hint">SEND MESSAGE ON INSTAGRAM TO ALLE STORE TO ORDER</p>
-      
-      
-      
     </div>
   </div>
 </div>
+
 <script>
-const INSTAGRAM_URL = "https://www.instagram.com/alle.store0?igsh=ZGZyNGMydW1tcDZz&utm_source=qr";
+  const INSTAGRAM_URL = "https://www.instagram.com/alle.store0?igsh=ZGZyNGMydW1tcDZz&utm_source=qr";
+
+  const products = [
+  
+     { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+  
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
 
 
-   const products = [
-  
-  
-   { img:" https://cdn.phototourl.com/pro/2026-05-27-1daba2b5-069e-42f7-98fc-8cd00daa1158.png",  
+  { img:"image.png",  
    name:"Aldo",    price:"40,000 IQD", tag:"",
       desc:"30cm" },
-  
-     { img:"     https://cdn.phototourl.com/pro/2026-05-27-e833ac28-2de7-47f3-b3a1-51cd4f717a59.png ",  
-   name:"Coach",    price:"35,000 IQD", tag:"HOT",
-      desc:"23cm" },
-      
-       { img:"   https://cdn.phototourl.com/pro/2026-05-27-01560a05-6bbe-4695-b268-fc9d74f2b352.png  ",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-      
-      
-   { img:" https://cdn.phototourl.com/pro/2026-05-27-7ad6c457-6da4-4527-9e8f-ab7ca27516d5.png ",  
-   name:"Coach",    price:"45,000 IQD", tag:"",
-      desc:"38cm" },
-  
-  
-   { img:"  https://cdn.phototourl.com/pro/2026-05-27-c1b8b632-8312-4b01-b9c5-f58a933a8906.png ",  
-   name:"Hermes",    price:"45,000 IQD", tag:"",
-      desc:"28cm" },
-  
-  
-     { img:" https://cdn.phototourl.com/pro/2026-05-27-f977a57f-a98f-4e10-b8ae-3a111319cf45.png ",  
-   name:"YSL",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-      
-      
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-68c082a2-0011-4dda-bcfd-7a464c07b844.png ",  
-   name:"YSL",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-      
-             { img:" https://cdn.phototourl.com/pro/2026-05-27-06760e5f-c360-4ba8-8a43-136d64ce70a7.png",  
-   name:"miu miu",    price:"40,000 IQD", tag:"",
-      desc:"27cm" },
-  
-          { img:"https://cdn.phototourl.com/pro/2026-05-27-b283acf5-353a-4e2d-a6e7-f62f10165085.png",  
-   name:"miu miu",    price:"40,000 IQD", tag:"",
-      desc:"27cm" },
-  
-  
-      { img:"https://cdn.phototourl.com/pro/2026-05-27-0a9641a0-82df-4a2f-9937-761eeef352a9.png",  
-   name:"miu miu",    price:"40,000 IQD", tag:"Soldout",
-      desc:"27cm" },
-  
-     { img:"https://cdn.phototourl.com/pro/2026-05-27-ed109c95-8c70-4b05-b77d-94f59ac2fbba.png",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"19cm" },
-  
-    { img:"https://cdn.phototourl.com/pro/2026-05-27-02789d36-bf6d-49eb-8fcf-cbf59af1b748.png",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"19cm" },
-      
-       { img:"  https://cdn.phototourl.com/pro/2026-05-27-e497ec96-228f-48d0-abb8-a6a04a8bdf4b.png   ",  
-   name:"Jwpe",    price:"45,000 IQD", tag:"HOT",
-      desc:"29cm" },
-  
-   { img:"  https://cdn.phototourl.com/pro/2026-05-27-615f8e3b-bb63-4981-90e6-19490cb6b46e.png   ",  
-   name:"Jwpe",    price:"45,000 IQD", tag:"",
-      desc:"29cm" },
-  
-    { img:"    https://cdn.phototourl.com/pro/2026-05-27-f2644ae9-7167-458f-8fa3-0d2f7ef60256.png ",  
-   name:"Jwpe",    price:"45,000 IQD", tag:"",
-      desc:"29cm" },
-  
-      { img:" https://cdn.phototourl.com/pro/2026-05-27-db7c5072-4511-4117-8ecd-7513e59b757c.png ",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-  
-      { img:" https://cdn.phototourl.com/pro/2026-05-27-6d1e9cf9-f1d9-4c02-9b42-047848c47dd0.png ",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"31cm" },
-  
-  
-   { img:" https://cdn.phototourl.com/pro/2026-05-27-d113fa62-67a9-4ed0-8b70-296b9e60bfee.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"31cm" },
-  
-  
-     { img:" https://cdn.phototourl.com/pro/2026-05-27-502cbcc6-01ff-4ede-914c-7cbfeea80470.png",  
-   name:"Guess",    price:"40,000 IQD", tag:"",
-      desc:"30cm" },
-  
-  
-    { img:" https://cdn.phototourl.com/pro/2026-05-27-772b855e-1c69-48c1-8982-d095d5ff6ff8.png",  
-   name:"Guess",    price:"40,000 IQD", tag:"",
-      desc:"30cm" },
-  
-  
-     { img:"https://cdn.phototourl.com/pro/2026-05-27-2c655687-cdd7-409a-a2f5-c3c63ed612cb.png ",  
-   name:"Channel",    price:"30,000 IQD", tag:"NEW",
-      desc:"19cm" },
-      
-      
-    { img:"https://cdn.phototourl.com/free/2026-05-26-a6e6a029-1b89-4579-b223-0fd5e8b07650.png  ",  name:"Channel",    price:"30,000 IQD", tag:"NEW",
-      desc:"19cm" },
-  
-  { img:"   https://cdn.phototourl.com/pro/2026-05-27-2037cbb9-60b1-4d70-aec2-f132c02a6500.png",  
-   name:"miu miu",    price:"35,000 IQD", tag:"",
-      desc:"26cm" },
-  
-    { img:" https://cdn.phototourl.com/pro/2026-05-27-455c42b2-f61c-4b27-8420-0b19ca0d8166.png ",  
-   name:"miu miu",    price:"35,000 IQD", tag:"",
-      desc:"26cm" },
-  
-  
-      { img:"  https://cdn.phototourl.com/pro/2026-05-27-c76891d0-b657-4ba6-adba-25f43cd9dfa0.png",  
-   name:"Coach",    price:"45,000 IQD", tag:"",
-      desc:"38cm" },
-  
-       { img:" https://cdn.phototourl.com/pro/2026-05-27-c08c6a75-03f3-4780-bc86-1e7de9115d6a.png ",  
-   name:"YSL",    price:"40,000 IQD", tag:"HOT",
-      desc:"43cm" },
-  
-         { img:" https://cdn.phototourl.com/pro/2026-05-27-d7c322f5-591a-4c76-87ae-9fc26d30eb3e.png ",  
-   name:"YSL",    price:"40,000 IQD", tag:"",
-      desc:"43cm" },
-  
-     { img:" https://cdn.phototourl.com/pro/2026-05-27-4a1a7cbd-930f-4aaf-aa0d-aa0ea8a16a3e.png ",  
-   name:"Aldo",    price:"35,000 IQD", tag:"",
-      desc:"28cm" },
-  
-       { img:" https://cdn.phototourl.com/pro/2026-05-27-4833ea0c-e1ab-4fbd-8bd4-b0cad80695a0.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
 
-  
-        { img:"https://cdn.phototourl.com/pro/2026-05-27-3c9af401-060e-4832-a9f3-0a87d4ea3ce8.png ",  
-   name:"Channel",    price:"35,000 IQD", tag:"",
-      desc:"18cm" },
-  
-          { img:"https://cdn.phototourl.com/pro/2026-05-27-3657ceb0-a34e-4ad7-9515-bf4b7b5c0099.png ",  
-   name:"Channel",    price:"35,000 IQD", tag:"",
-      desc:"18cm" },
-  
-  
-         { img:" https://cdn.phototourl.com/pro/2026-05-27-7f34041f-e7ee-4483-b979-a9bdb8b6da81.png ",  
-   name:"Aldo",    price:"35,000 IQD", tag:"",
-      desc:"24cm" },
-  
-  
-      { img:"https://cdn.phototourl.com/pro/2026-05-27-a9b5207e-6ea4-46b4-9a18-dff46e384020.png",  
-   name:"Aldo",    price:"35,000 IQD", tag:"",
-      desc:"24cm" },
-  
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-72c12f32-c2ef-4bff-8a0b-6aee316860e9.png ",  
+  { img:"image.png",  
    name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"24cm" },
-  
-  
-      { img:"https://cdn.phototourl.com/free/2026-05-26-955b95c1-737b-41fd-ab6e-8ef3103da2c4.jpg ",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"24cm" },
-  
-  
-      { img:" https://cdn.phototourl.com/pro/2026-05-27-7f0bba2b-0769-4d73-96f2-f4bfae6e7535.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"24cm" },
-  
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-ae7dda15-f2ff-4d69-8b38-9913d82d50a7.png ",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"24cm" },
-  
-  
-         { img:"https://cdn.phototourl.com/pro/2026-05-27-1e8dbe8d-942f-4814-b41c-90a51cafd331.png ",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"24cm" },
-  
-  
-     { img:"https://cdn.phototourl.com/pro/2026-05-27-e117e529-6230-431b-a804-68033ab5505b.png ",  
-   name:"Coach",    price:"45,000 IQD", tag:"NEW",
-      desc:"28cm" },
-  
-  
-  
-  { img:"https://cdn.phototourl.com/pro/2026-05-27-94472995-f895-4c18-a5be-cb5148d3a006.png",  
-   name:"Coach",    price:"45,000 IQD", tag:"NEW",
-      desc:"28cm" },
-  
-  
-    { img:"https://cdn.phototourl.com/pro/2026-05-27-789030f9-0dfd-4819-81f9-1334581f0835.png",  
-   name:"Coach",    price:"45,000 IQD", tag:"NEW",
-      desc:"28cm" },
-  
-  
-     { img:"https://cdn.phototourl.com/pro/2026-05-27-896ccfaf-8b9f-478a-b7b6-2ead0b638347.png",  
-   name:"Carolina Herrera",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-0fce54c5-92d2-4a19-9062-936a8a4502da.png",  
-   name:"Carolina Herrera",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-  
-         { img:"https://cdn.phototourl.com/pro/2026-05-27-0b3a2e29-1979-432d-a64b-e4790dfb4cf8.png",  
-   name:"Carolina Herrera",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-  
-  
-      { img:"https://cdn.phototourl.com/pro/2026-05-27-292683ce-70c3-4175-a45b-c982e1d594ac.png",  
-   name:"tory burch",    price:"35,000 IQD", tag:"",
-      desc:"22cm" },
-  
-  
-  
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-bcd7d36c-e2d9-4ec1-b2c0-3b89fe0f8e5b.png",  
-   name:"Jacquemus",    price:"40,000 IQD", tag:"",
       desc:"30cm" },
-  
-         { img:"https://cdn.phototourl.com/pro/2026-05-27-c899aef1-6436-4b31-a827-97f5704561ad.png",  
-   name:"Jacquemus",    price:"40,000 IQD", tag:"Soldout",
-      desc:"30cm" },
-  
-      { img:"https://cdn.phototourl.com/pro/2026-05-27-563070a8-8182-430e-a9dc-1a9690451be5.png",  
-   name:"Jacquemus",    price:"40,000 IQD", tag:"",
-      desc:"30cm" },
-  
-  
-   { img:"https://cdn.phototourl.com/pro/2026-05-27-e4439821-6433-46ba-85d2-7dee03898f69.png",  
-   name:"Jacquemus",    price:"40,000 IQD", tag:"",
-      desc:"30cm" },
-  
-   { img:"https://cdn.phototourl.com/pro/2026-05-26-fd01e2ed-d953-456b-ac67-24e411c72665.png",  
-   name:"Jacquemus",    price:"40,000 IQD", tag:"",
-      desc:"30cm" },
-  
-  
-     { img:"https://cdn.phototourl.com/pro/2026-05-27-ddaa953f-d77a-4f9a-a1d3-3ad1da8c610a.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-  
-  
-     { img:"https://cdn.phototourl.com/pro/2026-05-27-b8be9a9f-b861-447a-b958-4c40685a4706.png",  
-   name:"Hermes",    price:"45,000 IQD", tag:"",
-      desc:"29cm" },
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-a365afdf-ef0b-4105-a431-e649f29c4779.png",  
-   name:"Hermes",    price:"45,000 IQD", tag:"",
-      desc:"29cm" },
-  
-  
-      { img:"https://cdn.phototourl.com/pro/2026-05-27-280be3cf-0176-4cc1-83be-13006645e367.png",  
-   name:"Hermes",    price:"45,000 IQD", tag:"",
-      desc:"29cm" },
-  
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-d2849cbb-d3e4-43f4-88bf-2259c952a145.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-  
-         { img:"https://cdn.phototourl.com/pro/2026-05-27-da7e74d9-4712-42b3-a99d-3c6b427f6844.png",  
-   name:"Coach",    price:"40,000 IQD", tag:"NEW",
-      desc:"25cm" },
-  
-           { img:"https://cdn.phototourl.com/pro/2026-05-27-332284be-b4cb-4bdd-85ba-997db7339236.png",  
-   name:"Coach",    price:"40,000 IQD", tag:"NEW",
-      desc:"25cm" },
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-0ab892ba-f861-4be2-a1fa-c3ca20efea54.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-  
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-d7649433-d501-40ac-9bbc-35cc417eb289.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-  
-  
-    { img:"https://cdn.phototourl.com/pro/2026-05-27-4c4f1345-4787-41d6-9b64-eeec2e9519a4.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-  
-  
-     { img:"https://cdn.phototourl.com/pro/2026-05-27-2b9fee77-bb6c-49ec-ad38-178716eb05b3.png",  
-   name:"Givenchy",    price:"45,000 IQD", tag:"",
-      desc:"25cm" },
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-82e31d1d-9993-4c86-964d-9e51d7ad7e69.png",  
-   name:"Givenchy",    price:"45,000 IQD", tag:"",
-      desc:"25cm" },
-  
-      { img:"https://cdn.phototourl.com/pro/2026-05-27-f2d46f9a-84a2-4090-8551-c0a695604c51.png",  
-   name:"Givenchy",    price:"45,000 IQD", tag:"",
-      desc:"25cm" },
-  
-  
 
-  
-          { img:"https://cdn.phototourl.com/pro/2026-05-27-223b7029-af3f-4cbf-9404-dbf636084f50.png",  
-   name:"Givenchy",    price:"45,000 IQD", tag:"",
-      desc:"25cm" },
-  
-   { img:"https://cdn.phototourl.com/pro/2026-05-26-0b911ee1-bd74-4a91-b0b1-7f3f556a7dc4.png ",   name:"Givenchy",       price:"45,000 IQD", tag:"NEW",
-      desc:"25cm" },
-  
-  
-            { img:"https://cdn.phototourl.com/pro/2026-05-27-9b24e76c-b6e4-4dc1-9ada-1cc558f75d90.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-  
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-421b1b29-6d12-4a83-9aa2-0cfb18073c92.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-  
-         { img:"https://cdn.phototourl.com/pro/2026-05-27-c4267feb-1fe6-452b-a296-2ea4f6e7b0a1.png",  
-   name:"DKNY",    price:"10,000 IQD", tag:"",
-      desc:"11cm" },
-  
-      { img:"https://cdn.phototourl.com/pro/2026-05-27-86d0322d-66fb-401a-920b-dcf3f1fac197.png",  
-   name:"DKNY",    price:"10,000 IQD", tag:"",
-      desc:"11cm" },
-  
-         { img:"https://cdn.phototourl.com/pro/2026-05-27-87c7d824-66a3-4ff8-97ba-41a765d5fd6c.png",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"23cm" },
-  
-           { img:"https://cdn.phototourl.com/pro/2026-05-27-35df2b62-f81d-4542-ae73-14b7b493bf53.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },
-  
-             { img:"https://cdn.phototourl.com/pro/2026-05-27-2a590b24-661e-47a3-b454-2c9ac0ff7a40.png",  
-   name:"Aldo",    price:"35,000 IQD", tag:"",
-      desc:"28cm" },
-  
-  
-             { img:"https://cdn.phototourl.com/pro/2026-05-27-ea86b544-db40-4b97-a928-9c3d7cc25824.png",  
-   name:"miu miu",    price:"35,000 IQD", tag:"",
-      desc:"26cm" },
-  
-  
-  
-        { img:"https://cdn.phototourl.com/pro/2026-05-27-4150eb43-aef8-4162-8da6-2029013e10b9.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"40cm" },
-  
-  
-         { img:"https://cdn.phototourl.com/pro/2026-05-27-e3b9531e-e4ce-49f7-b545-7818526e9b37.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"40cm" },
-  
-           { img:"https://cdn.phototourl.com/pro/2026-05-27-49f2f950-ab8b-4012-9b12-34f5cbee9395.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"40cm" },
-  
-  
-             { img:"https://cdn.phototourl.com/pro/2026-05-27-03e64e3a-8edf-4d3f-90b6-c690816fd910.png",  
-   name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"40cm" },
-  
-  
-             { img:"https://cdn.phototourl.com/pro/2026-05-27-1076cad9-48e4-413c-809e-6dd7e8ed8700.png",  
-   name:"Jwpe",    price:"35,000 IQD", tag:"",
-      desc:"28cm" },
-  
-  
-          { img:"https://cdn.phototourl.com/pro/2026-05-27-7dcb75f0-a82b-4ec6-ba11-cdb8b4f720e9.png",  
-   name:"Jwpe",    price:"35,000 IQD", tag:"",
-      desc:"28cm" },
-  
-  
-            { img:"https://cdn.phototourl.com/pro/2026-05-27-3219c5d5-1b1e-42f4-83c1-0963d55fcc1f.png",  
-   name:"Jwpe",    price:"35,000 IQD", tag:"",
-      desc:"28cm" },
-  
-  
-           { img:"https://cdn.phototourl.com/pro/2026-05-27-e25ce295-d9be-43a8-bdc5-b53de0c92d46.png",  
-   name:"Polo",    price:"40,000 IQD", tag:"",
-      desc:"25cm" },
-  
-      { img:"https://cdn.phototourl.com/pro/2026-05-27-73d39fcd-8db2-47d2-b4a1-112d456ef4a8.png",  
-   name:"Polo",    price:"40,000 IQD", tag:"",
-      desc:"25cm" },
-  
-  
-        { img:"https://cdn.phototourl.com/pro/2026-05-27-27f97a78-fe10-4d20-82b8-f0d60e95ff1a.png",  
-   name:"charles and keith",    price:"35,000 IQD", tag:"",
-      desc:"19cm" },
-  
-  
-          { img:"https://cdn.phototourl.com/pro/2026-05-27-91d57bb7-b5ec-4a4a-b02c-a202266190ff.png",  
-   name:"charles and keith",    price:"35,000 IQD", tag:"",
-      desc:"27cm" },
-  
-  
-         { img:"https://cdn.phototourl.com/pro/2026-05-27-f8a96e34-922e-41e5-a6b7-c3533b520383.png",  
-   name:"charles and keith",    price:"35,000 IQD", tag:"",
-      desc:"27cm" },
-  
-          { img:"https://cdn.phototourl.com/pro/2026-05-27-9a656aa5-bcab-4327-ac9b-97a70f0f2818.png",  
-   name:"charles and keith",    price:"35,000 IQD", tag:"",
-      desc:"27cm" },
-  
-         { img:"https://cdn.phototourl.com/pro/2026-05-27-0182e8ac-8fea-48c8-b1b0-230c69562679.png",  
-   name:"Polene",    price:"35,000 IQD", tag:"",
-      desc:"30cm" },
-  
-         { img:"https://cdn.phototourl.com/pro/2026-05-27-a99cd717-f76d-424b-aa3d-12c4f7581452.png",  
-   name:"Polene",    price:"35,000 IQD", tag:"",
-      desc:"30cm" },
-  
-  
-           { img:"https://cdn.phototourl.com/pro/2026-05-27-c0c64d32-9840-4e3e-a283-90c9622e49e3.png",  
-   name:"Aldo",    price:"35,000 IQD", tag:"",
-      desc:"28cm" },
-  
-  
-             { img:"https://cdn.phototourl.com/pro/2026-05-27-32d938ea-864e-4cb1-9bf9-9f5ca7da61d9.png",  
-   name:"miu miu",    price:"40,000 IQD", tag:"",
-      desc:"30cm" },
-  
-      { img:"https://cdn.phototourl.com/pro/2026-05-27-67c51cb1-a701-4693-be68-668fedc2c453.png",  
-   name:"miu miu",    price:"40,000 IQD", tag:"",
-      desc:"30cm" },
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-de237d0a-3d4f-49a1-804d-93de11beb443.png",  
-   name:"Tommy Hilfiger",    price:"40,000 IQD", tag:"",
-      desc:"43cm" },
-  
-   { img:"https://cdn.phototourl.com/pro/2026-05-27-96f40051-4795-4590-a2e2-586336ea3970.png",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"39cm" },
-  
-     { img:"https://cdn.phototourl.com/pro/2026-05-27-8811e3c9-67c6-4890-a153-f236a5b632aa.png",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"39cm" },
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-7a9c655e-3f18-45e2-a9e2-7c8b84ef3fa4.png",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"39cm" },
-  
-  
-         { img:"https://cdn.phototourl.com/pro/2026-05-27-653d62ce-e90b-4212-ae3d-e69c8dcf48e7.png",  
-   name:"YSL",    price:"40,000 IQD", tag:"",
-      desc:"25cm" },
-  
-  
-           { img:"https://cdn.phototourl.com/pro/2026-05-27-48db079d-5d20-48e5-ac43-4d767c242a55.png",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"38cm" },
-  
-    { img:"https://cdn.phototourl.com/pro/2026-05-27-ab47a872-fa49-4451-b012-a9a2d35e8cb2.png",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"38cm" },
-  
-      { img:"https://cdn.phototourl.com/pro/2026-05-27-202031db-548b-4342-a19d-052b71769d8a.png",  
-   name:"tory burch",    price:"45,000 IQD", tag:"",
-      desc:"36cm" },
-  
-     { img:"https://cdn.phototourl.com/pro/2026-05-27-da2f7c05-f68d-4c4c-af84-d58754e2cf73.png",  
-   name:"tory burch",    price:"45,000 IQD", tag:"",
-      desc:"36cm" },
-  
-   { img:"https://cdn.phototourl.com/pro/2026-05-27-d1ceea3c-4661-4363-9aa2-1fce7ce81296.png",  
-   name:"tory burch",    price:"45,000 IQD", tag:"",
-      desc:"36cm" },
-  
-   { img:"https://cdn.phototourl.com/pro/2026-05-27-0b1150a9-fa39-4a86-9707-b6d245fa7659.png",  
-   name:"tory burch",    price:"45,000 IQD", tag:"",
-      desc:"36cm" },
-  
-     { img:"https://cdn.phototourl.com/pro/2026-05-27-02af1cb3-31b3-4c06-b11d-89684872f147.png",  
-   name:"dolce and gabbana",    price:"35,000 IQD", tag:"",
-      desc:"26cm" },
-  
-     { img:"https://cdn.phototourl.com/pro/2026-05-27-aebd12f6-e03d-4b30-97e7-b40f17a973d2.png",  
-   name:"dolce and gabbana",    price:"35,000 IQD", tag:"",
-      desc:"26cm" },
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-4cb6f16c-b7d8-4929-9a12-89f7ec4f3b4d.png",  
-   name:"dolce and gabbana",    price:"35,000 IQD", tag:"",
-      desc:"26cm" },
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-3d47e477-68d7-4c61-b3c6-6f6ce3b1de5c.png",  
-   name:"dolce and gabbana",    price:"35,000 IQD", tag:"",
-      desc:"26cm" },
 
-  
-         { img:"https://cdn.phototourl.com/pro/2026-05-27-1ddbff73-8fd3-4c9f-ba35-cfd3c74cf166.png",  
-   name:"Tommy Hilfiger",    price:"40,000 IQD", tag:"",
-      desc:"40cm" },
-  
-  
-  
-           { img:"https://cdn.phototourl.com/pro/2026-05-27-4dca8e1d-b941-4682-b32e-2228a2bd30c4.png",  
-   name:"Hermes",    price:"35,000 IQD", tag:"",
-      desc:"23cm" },
-  
-             { img:"https://cdn.phototourl.com/pro/2026-05-27-0c286857-07d6-47ed-b6f6-559bc2e01cd4.png",  
-   name:"Hermes",    price:"35,000 IQD", tag:"",
-      desc:"23cm" },
-  
-               { img:"https://cdn.phototourl.com/pro/2026-05-27-4d7d7667-5035-4754-8986-b286a32bd35f.png",  
-   name:"Hermes",    price:"35,000 IQD", tag:"",
-      desc:"23cm" },
-  
-  
-               { img:"https://cdn.phototourl.com/pro/2026-05-27-0f90b81c-0a6c-40bd-9422-d9838c7f0059.png",  
-   name:"Celine",    price:"35,000 IQD", tag:"",
-      desc:"25cm" },
-  
-  
-    { img:"https://cdn.phototourl.com/pro/2026-05-27-156ee0be-5566-47d7-8604-8dda1e83aec7.png",  
-   name:"Celine",    price:"35,000 IQD", tag:"",
-      desc:"25cm" },
-  
-  
-      { img:"https://cdn.phototourl.com/pro/2026-05-27-45c12936-c183-4bbf-ba4d-54d91fe05c13.png",  
-   name:"Hermes",    price:"45,000 IQD", tag:"",
-      desc:"28cm" },
-  
-        { img:"https://cdn.phototourl.com/pro/2026-05-27-0c81583c-9fcf-4fcf-9ee2-2248653f9fbc.png",  
-   name:"Coach",    price:"45,000 IQD", tag:"",
-      desc:"27cm" },
-  
-          { img:"https://cdn.phototourl.com/pro/2026-05-27-73e59ad0-0c9e-4add-a8cb-12545139e2d6.png",  
-   name:"Coach",    price:"45,000 IQD", tag:"",
-      desc:"27cm" },
-  
-  
-  
-            { img:"https://cdn.phototourl.com/pro/2026-05-27-f8882962-b79c-4d9c-8ead-752a984d6d11.png",  
-   name:"Guess",    price:"35,000 IQD", tag:"",
-      desc:"26cm" },
-  
-  
-              { img:"https://cdn.phototourl.com/pro/2026-05-27-deb09b2e-73cf-47ab-838d-5f816537737d.png",  
-   name:"Coach",    price:"40,000 IQD", tag:"",
-      desc:"36cm" },
-  
-             { img:"https://cdn.phototourl.com/pro/2026-05-27-4d3158a3-038c-461d-b824-dec00d29c4f9.png",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"21cm" },
-      
-      { img:"https://cdn.phototourl.com/pro/2026-05-26-a46d669e-b48f-4511-a9e2-97a386589615.png ", name:"Coach",   
-    price:"35,000 IQD", tag:"",
-      desc:"21cm" },
-  
-               { img:"https://cdn.phototourl.com/pro/2026-05-27-6390afd1-4607-4517-860a-fd1446328598.png",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"21cm" },
-  
-               { img:"https://cdn.phototourl.com/pro/2026-05-27-8389ad60-144e-4379-a35e-3070b3b60ee3.png",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"21cm" },
-  
-                 { img:"https://cdn.phototourl.com/pro/2026-05-27-1aa28656-611a-4773-a4b7-4c9fab7ca5a4.png",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"21cm" },
-  
-  
-                  { img:"https://cdn.phototourl.com/pro/2026-05-27-5d2d0450-5b66-4b17-9669-dda7eaad792c.png",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"21cm" }, 
-  
-  
-                 { img:" https://cdn.phototourl.com/pro/2026-05-27-49452d1f-4616-42e8-9f95-8afbc5eac76c.png  ",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"21cm" }, 
-  
-                   { img:"  https://cdn.phototourl.com/pro/2026-05-27-845a16e1-f023-4597-beac-7d3409feb6fc.png ",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"21cm" }, 
-  
-                   { img:" https://cdn.phototourl.com/pro/2026-05-27-2d75020a-3dcc-49a3-a92a-2c3472c31f66.png  ",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"21cm" }, 
-  
-                     { img:"  https://cdn.phototourl.com/pro/2026-05-27-59632ff1-f3bd-4c5f-947b-f2cf7e081e49.png ",  
-   name:"Emily Loran",    price:"40,000 IQD", tag:"",
-      desc:"27cm" }, 
-  
-                       { img:" https://cdn.phototourl.com/pro/2026-05-27-ffb3e471-c728-41d8-a413-427de317146c.png ",  
-   name:"Emily Loran",    price:"40,000 IQD", tag:"",
-      desc:"27cm" }, 
-  
-  
-                       { img:" https://cdn.phototourl.com/pro/2026-05-27-40fc72f5-f0b1-4a04-adcd-fb4768168f51.png ",  
-   name:"Emily Loran",    price:"40,000 IQD", tag:"",
-      desc:"27cm" }, 
-  
-                        { img:" https://cdn.phototourl.com/pro/2026-05-27-5c49ec13-0902-4ecc-989b-fdf1d109078f.png ",  
+  { img:"image.png",  
    name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"26cm" },  
-  
-  
-                  { img:" https://cdn.phototourl.com/pro/2026-05-27-8281171a-001a-4ea0-a19a-e47b684f70e2.png ",  
+      desc:"30cm" },
+
+
+  { img:"image.png",  
    name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"26cm" }, 
-  
-                    { img:"https://cdn.phototourl.com/pro/2026-05-27-3bc9fb1d-8018-4979-8b96-50fcd39a33b8.png ",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"23cm" }, 
-  
-                      { img:"https://cdn.phototourl.com/pro/2026-05-27-6ff1a687-2b9f-4bb4-8f19-cef537c29f08.png ",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"23cm" }, 
-  
-             { img:"https://cdn.phototourl.com/pro/2026-05-27-883a36d3-1574-42d7-9d95-436ac14d7e66.png ",  
-   name:"Coach",    price:"30,000 IQD", tag:"",
-      desc:"23cm" }, 
-  
-      { img:"https://cdn.phototourl.com/pro/2026-05-27-62ce2e49-d5a3-4e62-9dc0-c2c483492ef5.png ",  
-   name:"Coach",    price:"30,000 IQD", tag:"",
-      desc:"23cm" },
-  
-       { img:"https://cdn.phototourl.com/pro/2026-05-27-3d79a879-4aad-4fd6-a9b8-d608f283def0.png ",  
-   name:"Coach",    price:"30,000 IQD", tag:"",
-      desc:"23cm" },
-  
-    { img:" https://cdn.phototourl.com/pro/2026-05-27-f56202e3-2b0d-4977-b4ea-1dfa9af3b554.png",  
+      desc:"30cm" },
+
+
+  { img:"image.png",  
    name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"24cm" }, 
-  
-     { img:" https://cdn.phototourl.com/pro/2026-05-27-0e106c76-0d51-4384-9915-25e329d7dd74.png",  
+      desc:"30cm" },
+
+
+ { img:"image.png",  
    name:"Aldo",    price:"40,000 IQD", tag:"",
-      desc:"24cm" },
+      desc:"30cm" },
   
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+ { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
-       { img:" https://cdn.phototourl.com/pro/2026-05-27-2957ca90-6696-4771-9d05-eff01dd472b0.png ",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"23cm" },
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+   { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+ { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
-         { img:" https://cdn.phototourl.com/pro/2026-05-27-6d2da48c-0043-45b4-a33d-b74a1d64cac9.png ",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"23cm" },
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+ { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
-         { img:" https://cdn.phototourl.com/pro/2026-05-27-22176fa2-b067-48f6-8a88-56e331a14b88.png ",  
-   name:"Coach",    price:"35,000 IQD", tag:"",
-      desc:"23cm" },
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+   { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+ { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
-        { img:" https://cdn.phototourl.com/pro/2026-05-27-4cbab761-453a-432b-8d2d-b010897dcb80.png ",  
-   name:"Givenchy",    price:"45,000 IQD", tag:"",
-      desc:"25cm" },
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+ { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
-          { img:" https://cdn.phototourl.com/pro/2026-05-27-7c74e4c2-813c-4fb0-8ed7-b16b7a446c33.png",  
-   name:"Givenchy",    price:"45,000 IQD", tag:"",
-      desc:"25cm" },
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+
+
+         { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
-            { img:" https://cdn.phototourl.com/pro/2026-05-27-289c6046-83e1-40cf-8e30-eb3fe295e729.png",  
-   name:"Givenchy",    price:"45,000 IQD", tag:"",
-      desc:"25cm" },
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+ { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+ { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
-            { img:"https://cdn.phototourl.com/pro/2026-05-27-58836b46-2a59-4402-ab1a-7b1af8c5ff57.png ",  
-   name:"Givenchy",    price:"45,000 IQD", tag:"",
-      desc:"25cm" },
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+   { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
-   { img:"https://cdn.phototourl.com/pro/2026-05-27-af8a97b4-832a-4cd3-84e5-ac80882526d0.png ",  
-   name:"bvlgari",    price:"55,000 IQD", tag:"",
-      desc:"28cm" },
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+ { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
-    { img:" https://cdn.phototourl.com/pro/2026-05-27-a609e6b4-5b88-43a8-a8b2-d0c45fbe14b8.png",  
-   name:"bvlgari",    price:"55,000 IQD", tag:"",
-      desc:"28cm" }, 
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+ { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
-     { img:"https://cdn.phototourl.com/pro/2026-05-27-48bedabd-a803-4d0a-bb67-50061f73b3f4.png ",  
-   name:"bvlgari",    price:"55,000 IQD", tag:"",
-      desc:"28cm" },
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+   { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
-     { img:" https://cdn.phototourl.com/pro/2026-05-27-712751ab-9f95-4757-87be-553205019fd0.png",  
-   name:"bvlgari",    price:"55,000 IQD", tag:"",
-      desc:"28cm" },
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+ { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
-    ];
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+ { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
   
+   { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+  
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+ { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+  
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+ { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+  
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
 
 
 
 
 
 
- // Render grid
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+  { img:"image.png",  
+   name:"Aldo",    price:"40,000 IQD", tag:"",
+      desc:"30cm" },
+
+
+
+
+
+
+
+
+
+
+
+
+   
+   
+  ];
+
+  // Render grid
   const grid = document.getElementById("grid");
   products.forEach((p, i) => {
     grid.innerHTML += `
@@ -844,12 +991,3 @@ const INSTAGRAM_URL = "https://www.instagram.com/alle.store0?igsh=ZGZyNGMydW1tcD
     document.getElementById("modal").classList.remove("open");
   }
 </script>
-
-
-
-
-
-
-
-
-
